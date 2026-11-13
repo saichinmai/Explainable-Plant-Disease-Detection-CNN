@@ -239,3 +239,28 @@ The project combines Deep Learning, Explainable AI and web application developme
 **Project Domain:** Deep Learning and Explainable Artificial Intelligence
 
 **Project Title:** Explainable Plant Disease Detection Using Convolutional Neural Networks (CNNs)
+
+
+
+## 16. Project Screenshots
+
+### CNN Model Accuracy
+![CNN Model Accuracy](screenshots/CNN%20model%20accuracy.png)
+
+### CNN Model Loss
+![CNN Model Loss](screenshots/CNN%20model%20loss.png)
+
+### Prediction Result
+![Prediction Result](screenshots/prediction.jpeg)
+
+### Class Probabilities
+![Class Probabilities](screenshots/class%20probabilities.jpeg)
+
+### Grad-CAM Heatmap
+![Grad-CAM Heatmap](screenshots/gradcam_heatmap.jpg)
+
+### Grad-CAM Overlay
+![Grad-CAM Overlay](screenshots/Grad-CAM%20Overlay.jpg)
+
+### Confusion Matrix
+![Confusion Matrix](screenshots/plant%20disease%20detection%20using%20confusion%20matrix.png)
