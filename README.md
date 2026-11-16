@@ -176,34 +176,24 @@ The project combines CNN-based classification, model evaluation, Explainable AI 
 - Enhance the Grad-CAM explanations.
 - Deploy the application for wider accessibility.
 
----
 
-**Project Domain:** Essentials of Deep Learning (EDL)
 
-**Project Title:** Explainable Plant Disease Detection Using Convolutional Neural Networks (CNNs)
+## Project Screenshots
 
-## 9. Project Screenshots
+### 1. Prediction Result
+![Prediction](screenshots/prediction.jpeg)
 
-### 1. PlantGuard AI Application
-![PlantGuard AI Interface](screenshots/plantguard_home.png)
+### 2. Class Probabilities
+![Class Probabilities](screenshots/class%20probabilities.jpeg)
 
-### 2. Disease Prediction Result
-![Disease Prediction](screenshots/prediction.jpeg)
+### 3. CNN Model Accuracy
+![CNN Model Accuracy](screenshots/CNN%20model%20accuracy.png)
 
-### 3. Class Probabilities
-![Class Probabilities](screenshots/class_probabilities.jpeg)
+### 4. CNN Model Loss
+![CNN Model Loss](screenshots/CNN%20model%20loss.png)
 
-### 4. CNN Model Accuracy
-![CNN Model Accuracy](screenshots/CNN_model_accuracy.png)
-
-### 5. CNN Model Loss
-![CNN Model Loss](screenshots/CNN_model_loss.png)
-
-### 6. Confusion Matrix
-![Confusion Matrix](screenshots/confusion_matrix.png)
-
-### 7. Grad-CAM Heatmap
+### 5. Grad-CAM Heatmap
 ![Grad-CAM Heatmap](screenshots/gradcam_heatmap.jpg)
 
-### 8. Grad-CAM Overlay
-![Grad-CAM Overlay](screenshots/Grad-CAM_Overlay.jpg)
+### 6. Grad-CAM Overlay
+![Grad-CAM Overlay](screenshots/Grad-CAM%20Overlay.jpg)
