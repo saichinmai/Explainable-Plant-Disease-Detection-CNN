@@ -1,266 +1,209 @@
-# 🌿 Explainable Plant Disease Detection Using Convolutional Neural Networks (CNNs)
+# 🌿 PlantGuard AI
+## Explainable Plant Disease Detection Using Convolutional Neural Networks (CNNs)
 
-## 1. Project Overview
+### 1. Project Overview
 
-Plant diseases can reduce agricultural productivity, making early identification important. This project develops an explainable plant disease detection system using Convolutional Neural Networks (CNNs) to classify plant leaf images into healthy and diseased categories.
+PlantGuard AI is a Deep Learning-based application that identifies plant leaf diseases using Convolutional Neural Networks (CNNs).
 
-Grad-CAM (Gradient-weighted Class Activation Mapping) is integrated to generate visual heatmaps highlighting the image regions that influence the model's predictions. A Streamlit-based web application allows users to upload leaf images and view the predicted category, confidence score and visual explanation.
+The system classifies uploaded leaf images into 10 different disease categories and provides visual explanations using Grad-CAM (Gradient-weighted Class Activation Mapping).
 
-The project demonstrates the practical application of Deep Learning and Explainable Artificial Intelligence (XAI) in agriculture.
+The project combines CNN-based image classification with Explainable AI to make model predictions easier to understand.
 
-## 2. Objectives
+### 2. Objectives
 
-- Develop a CNN-based model for plant disease classification.
-- Classify plant leaf images into healthy and diseased categories.
-- Apply Grad-CAM to explain the model's predictions.
-- Develop an interactive web application using Streamlit.
-- Evaluate model performance using accuracy, precision, recall, F1-score and a confusion matrix.
+- Develop a CNN model for plant disease classification.
+- Identify diseases from plant leaf images.
+- Train and evaluate the CNN model using a labelled dataset.
+- Apply Grad-CAM to visualize important image regions influencing predictions.
+- Develop a user-friendly application using Streamlit.
 
-## 3. Technologies Used
+### 3. Technologies Used
 
-| Technology | Purpose |
-|---|---|
-| Python | Programming language |
-| TensorFlow / Keras | CNN model development and training |
-| CNN | Plant disease image classification |
-| NumPy | Numerical operations |
-| OpenCV | Image processing and heatmap generation |
-| Matplotlib | Graphs and visualizations |
-| Scikit-learn | Model evaluation and classification metrics |
-| Streamlit | Web application development |
-| Google Colab | Model training and experimentation |
-| Visual Studio Code | Application development |
-| Git and GitHub | Version control and project hosting |
+- Python
+- TensorFlow and Keras
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Streamlit
+- PIL (Pillow)
+- Google Colab
+- Kaggle Dataset
 
-## 4. Dataset Details
+### 4. Dataset Description
 
-The project uses the PlantVillage plant disease image dataset.
+**Dataset:** PlantVillage Dataset
 
-The implementation uses 10 selected classes representing three plant types:
+The project uses 10 selected classes covering healthy and diseased pepper, potato and tomato leaves.
 
-### Pepper
-1. Pepper bell Bacterial spot
-2. Pepper bell healthy
+The dataset is divided into:
 
-### Potato
-3. Potato Early blight
-4. Potato healthy
+- Training: 70%
+- Validation: 15%
+- Testing: 15%
 
-### Tomato
-5. Tomato Early blight
-6. Tomato Late blight
-7. Tomato Leaf Mold
-8. Tomato Yellow Leaf Curl Virus
-9. Tomato mosaic virus
-10. Tomato healthy
+Images are resized to 128 × 128 pixels and normalized before being supplied to the CNN model.
 
-### Dataset Split
+### 5. CNN Model Architecture
 
-The dataset was divided into three subsets:
+The proposed CNN architecture consists of:
 
-| Dataset | Percentage |
-|---|---:|
-| Training | 70% |
-| Validation | 15% |
-| Testing | 15% |
+1. Input Layer – 128 × 128 RGB images.
+2. Data Augmentation – Random horizontal flipping and rotation.
+3. First Convolution Block – 32 filters with ReLU activation.
+4. Second Convolution Block – 64 filters with ReLU activation.
+5. Third Convolution Block – 128 filters with ReLU activation.
+6. MaxPooling Layers – Reduce feature-map dimensions.
+7. Flatten Layer – Converts feature maps into a vector.
+8. Dense Layer – 128 neurons with ReLU activation.
+9. Dropout Layer – Reduces overfitting.
+10. Output Layer – Softmax activation for 10 disease classes.
 
-The notebook performs dataset preparation, image preprocessing and splitting.
+### 6. Model Training
 
-## 5. Methodology
+The CNN model is trained using:
 
-The project follows these major steps:
-
-1. Dataset collection – Selected plant leaf images from PlantVillage.
-2. Data preprocessing – Resized images to 128 × 128 pixels and normalized pixel values.
-3. Dataset splitting – Divided the images into training, validation and testing sets.
-4. CNN model development – Built a CNN architecture using convolutional and pooling layers.
-5. Model training – Trained the model using the training dataset and monitored validation performance.
-6. Model evaluation – Evaluated the trained model using the test dataset.
-7. Grad-CAM implementation – Generated heatmaps to visualize important image regions.
-8. Web application development – Integrated the trained model into a Streamlit application.
-
-## 6. CNN Architecture
-
-The CNN model contains the following layers:
-
-- Input layer: 128 × 128 × 3
-- Random horizontal flipping
-- Random rotation
-- Convolutional layer: 32 filters
-- Max pooling layer
-- Convolutional layer: 64 filters
-- Max pooling layer
-- Convolutional layer: 128 filters
-- Max pooling layer
-- Flatten layer
-- Dense layer: 128 neurons
-- Dropout layer: 0.5
-- Output layer: 10 classes with Softmax activation
-
-**Model configuration:**
 - Optimizer: Adam
-- Loss function: Categorical Crossentropy
-- Evaluation metric: Accuracy
-- Training epochs: Up to 20
-- Batch size: 32
-- Image size: 128 × 128
+- Loss Function: Categorical Crossentropy
+- Evaluation Metric: Accuracy
+- Maximum Epochs: 20
+- Batch Size: 32
+- Image Size: 128 × 128
 
-## 7. Model Evaluation Results
+EarlyStopping, ReduceLROnPlateau and ModelCheckpoint callbacks are used during training.
 
-The trained model was evaluated using the test dataset.
+Class weights are also applied to handle class imbalance.
 
-### Overall Results
+### 7. Model Evaluation
 
-| Metric | Result |
-|---|---:|
-| Test Accuracy | 95.64% |
-| Test Loss | 0.1231 |
-| Macro Precision | 0.94 |
-| Macro Recall | 0.96 |
-| Macro F1-score | 0.95 |
-| Weighted F1-score | 0.96 |
+The trained model is evaluated using:
 
-### Evaluation Techniques
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- Classification Report
+- Confusion Matrix
 
-- Accuracy measures the overall proportion of correct predictions.
-- Precision measures how many predicted class labels were correct.
-- Recall measures how many actual class samples were correctly identified.
-- F1-score combines precision and recall.
-- Confusion matrix provides a class-wise comparison of actual and predicted labels.
+Training and validation accuracy and loss graphs are also generated to understand model performance.
 
-## 8. Explainable AI Using Grad-CAM
+### 8. Explainable AI Using Grad-CAM
 
-Grad-CAM (Gradient-weighted Class Activation Mapping) is used to explain the CNN model's predictions.
+Grad-CAM is used to explain the CNN model's predictions.
 
-It generates a heatmap showing the image regions that influenced the predicted class.
-
-### Grad-CAM Visualization
+It generates a heatmap highlighting image regions that influence the predicted disease class.
 
 The application displays:
+- Grad-CAM Heatmap
+- Grad-CAM Overlay
+- Predicted Disease Class
+- Prediction Confidence
 
-- Original uploaded leaf image.
-- Grad-CAM heatmap.
-- Heatmap overlay on the original image.
+### 9. Streamlit Application
 
-The highlighted regions help users understand which parts of the image influenced the model's prediction.
+The PlantGuard AI application provides the following features:
 
-**Note:** Grad-CAM provides a visual explanation of model behaviour. It does not prove the biological cause of a disease or guarantee a correct prediction.
-
-## 9. Streamlit Web Application
-
-The project includes an interactive web application developed using Streamlit.
-
-### Main Features
-
-- Upload plant leaf images in JPG, JPEG or PNG format.
-- Predict the plant disease category.
+- Upload plant leaf images.
+- Predict plant disease classes.
 - Display prediction confidence.
-- Display probabilities for all 10 classes.
+- Show class probabilities.
 - Generate Grad-CAM heatmaps.
-- Display the Grad-CAM overlay.
+- Display visual explanations.
 
-## 10. Project Folder Structure
+### 10. Project Structure
 
 ```text
-Explainable-Plant-Disease-Detection-CNN/
+EDLproject/
 │
-├── EDL_PROJECT.ipynb
 ├── app.py
+├── EDL_PROJECT.ipynb
 ├── plant_disease_model.keras
 ├── class_names.json
 ├── requirements.txt
-└── README.md
+├── README.md
+│
+└── screenshots/
 ```
 
-## 11. Installation and Execution
+### 11. Installation and Execution
 
-### Step 1: Clone the Repository
+**Step 1: Clone the repository**
 
 ```bash
-git clone https://github.com/saichinmai/Explainable-Plant-Disease-Detection-CNN.git
+git clone YOUR_GITHUB_REPOSITORY_URL
 ```
 
-### Step 2: Open the Project Folder
+**Step 2: Navigate to the project folder**
 
 ```bash
-cd Explainable-Plant-Disease-Detection-CNN
+cd EDLproject
 ```
 
-### Step 3: Install Dependencies
+**Step 3: Install dependencies**
 
 ```bash
-pip install -r requirements.txt
+py -3.11 -m pip install -r requirements.txt
 ```
 
-### Step 4: Run the Streamlit Application
+**Step 4: Run the Streamlit application**
 
 ```bash
-python -m streamlit run app.py
+py -3.11 -m streamlit run app.py
 ```
 
-### Step 5: Open the Application
+**Step 5: Upload a plant leaf image**
 
-Open the local URL displayed in the terminal, usually:
+Upload an image and click the Analyze Plant Image button to view the prediction and Grad-CAM explanation.
 
-```text
-http://localhost:8501
-```
+### 12. Results
 
-Upload a plant leaf image and click **Analyze Plant Image** to view the prediction and Grad-CAM explanation.
+The project generates disease classification predictions, class probabilities, evaluation reports and Grad-CAM visual explanations.
 
-## 12. Limitations
+The trained CNN model achieved approximately 95.64% test accuracy in the recorded notebook evaluation.
 
-- The model is trained on selected PlantVillage dataset classes and may not generalize equally well to all real-world field conditions.
-- Dataset class imbalance may affect individual class performance.
-- Some classes have fewer test images, so their individual evaluation results should be interpreted carefully.
-- Image quality, lighting and background differences may influence predictions.
-- Grad-CAM is an interpretation aid, not a definitive plant disease diagnosis.
+### 13. Conclusion
 
-## 13. Future Enhancements
+PlantGuard AI demonstrates the application of Deep Learning for plant disease classification using CNNs.
 
-- Add more plant species and disease categories.
-- Improve performance on real-world field images.
-- Develop a mobile-friendly application.
-- Explore transfer learning with pretrained CNN architectures.
-- Add disease prevention and treatment information from verified agricultural sources.
+Grad-CAM provides visual explanations of model predictions, improving the interpretability of the classification process.
 
-## 14. Conclusion
+The project combines CNN-based classification, model evaluation, Explainable AI and a Streamlit interface into a single application.
 
-This project demonstrates the use of Convolutional Neural Networks for plant disease classification and Grad-CAM for explainable predictions. The trained model achieved 95.64% test accuracy on the selected test dataset. The Streamlit application provides an interactive interface for image upload, disease prediction and visual explanation.
+### 14. Future Enhancements
 
-The project combines Deep Learning, Explainable AI and web application development to demonstrate a practical approach to plant disease detection.
-
-## 15. Repository
-
-**GitHub:** https://github.com/saichinmai/Explainable-Plant-Disease-Detection-CNN
+- Extend the dataset with additional plant species and disease categories.
+- Improve classification performance using larger datasets.
+- Explore more advanced CNN architectures.
+- Enhance the Grad-CAM explanations.
+- Deploy the application for wider accessibility.
 
 ---
 
-**Project Domain:** Deep Learning and Explainable Artificial Intelligence
+**Project Domain:** Essentials of Deep Learning (EDL)
 
 **Project Title:** Explainable Plant Disease Detection Using Convolutional Neural Networks (CNNs)
 
+## 9. Project Screenshots
 
+### 1. PlantGuard AI Application
+![PlantGuard AI Interface](screenshots/plantguard_home.png)
 
-## 16. Project Screenshots
+### 2. Disease Prediction Result
+![Disease Prediction](screenshots/prediction.jpeg)
 
-### CNN Model Accuracy
-![CNN Model Accuracy](screenshots/CNN%20model%20accuracy.png)
+### 3. Class Probabilities
+![Class Probabilities](screenshots/class_probabilities.jpeg)
 
-### CNN Model Loss
-![CNN Model Loss](screenshots/CNN%20model%20loss.png)
+### 4. CNN Model Accuracy
+![CNN Model Accuracy](screenshots/CNN_model_accuracy.png)
 
-### Prediction Result
-![Prediction Result](screenshots/prediction.jpeg)
+### 5. CNN Model Loss
+![CNN Model Loss](screenshots/CNN_model_loss.png)
 
-### Class Probabilities
-![Class Probabilities](screenshots/class%20probabilities.jpeg)
+### 6. Confusion Matrix
+![Confusion Matrix](screenshots/confusion_matrix.png)
 
-### Grad-CAM Heatmap
+### 7. Grad-CAM Heatmap
 ![Grad-CAM Heatmap](screenshots/gradcam_heatmap.jpg)
 
-### Grad-CAM Overlay
-![Grad-CAM Overlay](screenshots/Grad-CAM%20Overlay.jpg)
-
-### Confusion Matrix
-![Confusion Matrix](screenshots/plant%20disease%20detection%20using%20confusion%20matrix.png)
+### 8. Grad-CAM Overlay
+![Grad-CAM Overlay](screenshots/Grad-CAM_Overlay.jpg)
